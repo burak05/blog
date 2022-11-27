@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="row">
+
+    <!-- Post Content Column -->
+    <div class="col-lg-8">
+
+      
+
+      <!-- Author -->
+      <p class="lead">
+        
+        published by {{article.author.username}} 
+      </p>
+<!-- Title -->
+<h3 class="mt-4">{{article.title}}</h3>
+      <hr>
+
+      <!-- Date/Time -->
+      
+      <p class="lead">
+        {{article.content|safe}}
+    </p>
+    <p>Date Created: {{article.created_date}}</p>
+
+    <p>Category: {{article.category}}</p>
+
+{% endblock body %}
