@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+<form method = "post">
+    {%csrf_token%}
+    {{form.media}}
+    {{form.as_p}}
+    <br>
+    <button type ="submit" class = "btn btn-danger"> Update Article</button>
+</form>
+</div>
+</div>
+{% endblock body %}

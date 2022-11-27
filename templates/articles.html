@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h3> Articles</h3>
+<hr>
+<form>
+    {% csrf_token %} 
+   <input type="text" name = "keyword" class="input-sm" maxlength="64" placeholder="Search">
+ <button type="submit" class="btn btn-danger">Search</button>
+</form>
+{% if articles %}
+{% for article in articles %}
+<div class="row">
+
+    <!-- Post Content Column -->
+    <div class="col-lg-8">
+
+      
+
+      <!-- Author -->
+      <p class="lead">
+        
+        published by {{article.author.username}} 
+      </p>
+<!-- Title -->
+<a href="{% url 'article:detail' article.id %}"><h2 class="mt-4">{{article.title}}</h2></a>
+      <hr>
+
+      <!-- Date/Time -->
+      
+      <p class="lead">
+        {{article.content|safe}}
+    </p>
+    <p>Date Created: {{article.created_date|safe}}</p>
+
+    <p>Category: {{article.category|safe}}</p>
+    {% if article.article_image %}
+      <img class="img-fluid rounded" src="{{article.article_image.url}}" alt="">
+      {% endif %}
+
+{% endfor %}
+
+{% else %}
+<div class = "alert alert-danger">
+    No articles
+</div>
+{% endif %}
+
+{% endblock body %}
