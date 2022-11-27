@@ -25,5 +25,9 @@
     <p>Date Created: {{article.created_date}}</p>
 
     <p>Category: {{article.category}}</p>
+    {% if article.article_image %}
+      <img class="img-fluid rounded" src="{{article.article_image.url}}" alt="">
+      {% endif %}
+
 
 {% endblock body %}
